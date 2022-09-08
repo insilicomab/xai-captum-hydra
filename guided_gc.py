@@ -10,6 +10,8 @@ from utils import load_model_pth, ImageLoader, DataTransform
 @hydra.main(version_base=None, config_path='config', config_name='config')
 def main(cfg: DictConfig):
 
+    print(f'target: {cfg.target}')
+
     # load model weights and convert to eval mode
     model = load_model_pth(cfg.model_name, num_classes=cfg.num_classes, model_dir=cfg.model_dir)
     model.eval()
