@@ -13,7 +13,7 @@ hydra:
 
 
 ## User Setting ##
-input_img_dir: ''
+input_img_dir: 'input/PNEUMONIA/person1946_bacteria_4874.jpeg'
 output_img_dir: ''
 model_dir: 'models/convnext_base.pth'
 
