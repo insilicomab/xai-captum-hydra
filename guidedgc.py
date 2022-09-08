@@ -24,16 +24,16 @@ def main(cfg: DictConfig):
     # calculate attribution by Guided Grad-CAM
     guided_gc = captum.attr.GuidedGradCam(
         model,
-        model.stages[3].blocks[2].drop_path,
+        model.stages[3].blocks[2].drop_path, # <=== only layer needs to be defined here !!!
         device_ids=cfg.ggc.device_ids
         )
 
     attribution = guided_gc.attribute(
         inputs=input_img,
         target=cfg.target,
-        #additional_forward_args=cfg.ggc.additional_forward_args,
-        #interpolate_mode=cfg.ggc.interpolate_mode,
-        #attribute_to_layer_input=cfg.ggc.attribute_to_layer_input,
+        additional_forward_args=cfg.ggc.additional_forward_args,
+        interpolate_mode=cfg.ggc.interpolate_mode,
+        attribute_to_layer_input=cfg.ggc.attribute_to_layer_input,
     )
 
     attribution_img = attribution[0].cpu().permute(1,2,0).detach().numpy()
