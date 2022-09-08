@@ -14,7 +14,7 @@ from utils import load_model_pth, ImageLoader, DataTransform
 def main(cfg: DictConfig):
 
     # load model weights and convert to eval mode
-    model = load_model_pth('convnext_base', num_classes=2, model_dir='models/convnext_base.pth')
+    model = load_model_pth(cfg.model_name, num_classes=cfg.num_classes, model_dir=cfg.model_dir)
     model.eval()
 
     # load and process image to analyze
