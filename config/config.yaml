@@ -58,8 +58,6 @@ vis_img_multi:
   fig_size: [6, 6]
   use_pyplot: True
   
-  
-  
 
 
 ## Algorithm ##
