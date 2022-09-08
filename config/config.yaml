@@ -74,3 +74,12 @@ ggc:
   additional_forward_args:
   interpolate_mode: 'nearest'
   attribute_to_layer_input: False
+
+# Occlusion
+occlusion:
+  sliding_window_shapes: [3, 45, 45]
+  strides: [3, 9, 9] 
+  baselines: 0
+  additional_forward_args:
+  perturbations_per_eval: 1
+  show_progress: True
