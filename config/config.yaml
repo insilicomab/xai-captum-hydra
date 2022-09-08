@@ -14,8 +14,9 @@ hydra:
 
 ## User Setting ##
 input_img_dir: 'input/PNEUMONIA/person1946_bacteria_4874.jpeg'
-output_img_dir: ''
+output_img_dir: 'output/image/ggc_multi.png'
 model_dir: 'models/convnext_base.pth'
+target: 0
 
 
 ## Model ##
@@ -34,3 +35,13 @@ vis_img:
 
 vis_img_multi:
   enable: True
+
+
+## Algorithm ##
+
+# Guided Grad-CAM
+ggc:
+  device_ids: None
+  additional_forward_args: None # (any, optional, default: None)
+  interpolate_mode: 'nearest' # (str, optional, default: 'nearest')
+  attribute_to_layer_input: False # (bool, optional, default: False)
