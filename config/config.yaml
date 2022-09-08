@@ -63,11 +63,13 @@ vis_img_multi:
 ## Algorithm ##
 
 # Saliency
+# https://captum.ai/api/saliency.html#captum.attr.Saliency
 saliency:
   abs: True
   additional_forward_args: 
 
 # Guided Grad-CAM
+# https://captum.ai/api/guided_grad_cam.html#captum.attr.GuidedGradCam
 # !!! When using Guided Grad-CAM, you must specify a layer (line 27 in guided_gc.py). 
 ggc:
   device_ids:
@@ -76,6 +78,7 @@ ggc:
   attribute_to_layer_input: False
 
 # Occlusion
+# https://captum.ai/api/occlusion.html#captum.attr.Occlusion
 occlusion:
   sliding_window_shapes: [3, 45, 45]
   strides: [3, 9, 9] 
@@ -85,6 +88,7 @@ occlusion:
   show_progress: True
 
 # Grad-CAM
+# https://captum.ai/api/layer.html#captum.attr.LayerGradCam
 # !!! When using Grad-CAM, you must specify a layer (line 27 in guided_gc.py). 
 gradcam:
   device_ids:
