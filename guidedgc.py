@@ -4,11 +4,14 @@ import matplotlib.pyplot as plt
 import captum
 from captum.attr import visualization as viz
 
+import hydra
+from omegaconf import DictConfig
+
 from utils import load_model_pth, ImageLoader, DataTransform
 
 
-
-def main():
+@hydra.main(version_base=None, config_path='config', config_name='config')
+def main(cfg: DictConfig):
 
     # load model weights and convert to eval mode
     model = load_model_pth('convnext_base', num_classes=2, model_dir='models/convnext_base.pth')
