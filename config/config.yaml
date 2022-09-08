@@ -47,15 +47,19 @@ vis_img:
 
 # https://captum.ai/api/utilities.html#captum.attr.visualization.visualize_image_attr_multiple
 vis_img_multi:
-  enable: False
+  enable: True
   methods: ["heat_map", "original_image"]
   signs: ["absolute_value", "all"]
+  outlier_perc: 2
+  cmap:
+  alpha_overlay:
+  show_colorbar: True
   titles:
   fig_size: [6, 6]
-  use_pyplot:
-  show_colorbar: True
-  alpha_overlay:
-  cmap:
+  use_pyplot: True
+  
+  
+  
 
 
 ## Algorithm ##
