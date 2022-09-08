@@ -40,8 +40,9 @@ vis_img_multi:
 ## Algorithm ##
 
 # Guided Grad-CAM
+# !!! 
 ggc:
-  device_ids: None
-  additional_forward_args: None # (any, optional, default: None)
-  interpolate_mode: 'nearest' # (str, optional, default: 'nearest')
-  attribute_to_layer_input: False # (bool, optional, default: False)
+  device_ids:
+  additional_forward_args:
+  interpolate_mode: 'nearest'
+  attribute_to_layer_input: False
