@@ -22,11 +22,20 @@ def main(cfg: DictConfig):
     input_img, original_img = imageLoader.process_images()
 
     # calculate attribution by Guided Grad-CAM
-    guided_gc = captum.attr.GuidedGradCam(model, model.stages[3].blocks[2].drop_path)
+    guided_gc = captum.attr.GuidedGradCam(
+        model,
+        model.stages[3].blocks[2].drop_path,
+        device_ids=cfg.ggc.device_ids
+        )
+
     attribution = guided_gc.attribute(
         inputs=input_img,
-        target=0
+        target=cfg.target,
+        #additional_forward_args=cfg.ggc.additional_forward_args,
+        #interpolate_mode=cfg.ggc.interpolate_mode,
+        #attribute_to_layer_input=cfg.ggc.attribute_to_layer_input,
     )
+
     attribution_img = attribution[0].cpu().permute(1,2,0).detach().numpy()
 
     # save figures
@@ -39,7 +48,7 @@ def main(cfg: DictConfig):
         show_colorbar = True
         )
     
-    figure.savefig('output/image/ggc_multi.png')
+    figure.savefig(cfg.output_img_dir)
 
 
 if __name__ == '__main__':
