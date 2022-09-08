@@ -17,7 +17,7 @@ input_img_dir: 'input/PNEUMONIA/person1946_bacteria_4874.jpeg'
 output_img_dir: 'output/image/ggc.png'
 output_multi_img_dir: 'output/image/ggc_multi.png'
 model_dir: 'models/convnext_base.pth'
-target: 0
+target: 1
 
 
 ## Model ##
@@ -34,7 +34,7 @@ image_size: 224
 vis_img:
   enable: True
   method: 'blended_heat_map'
-  sign: 'absolute_value'
+  sign: 'all'
   plt_fig_axis:
   outlier_perc: 2
   cmap:
@@ -49,7 +49,7 @@ vis_img:
 vis_img_multi:
   enable: True
   methods: ["heat_map", "original_image"]
-  signs: ["absolute_value", "all"]
+  signs: ["all", "all"]
   outlier_perc: 2
   cmap:
   alpha_overlay:
@@ -61,6 +61,11 @@ vis_img_multi:
 
 
 ## Algorithm ##
+
+# Saliency
+saliency:
+  abs: True
+  additional_forward_args: 
 
 # Guided Grad-CAM
 # !!! When using Guided Grad-CAM, you must specify a layer (line 27 in guided_gc.py). 
