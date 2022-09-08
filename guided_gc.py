@@ -1,6 +1,3 @@
-import numpy as np
-import matplotlib.pyplot as plt
-
 import captum
 from captum.attr import visualization as viz
 
