@@ -14,8 +14,8 @@ hydra:
 
 ## User Setting ##
 input_img_dir: 'input/PNEUMONIA/person1946_bacteria_4874.jpeg'
-output_img_dir: 'output/image/ggc.png'
-output_multi_img_dir: 'output/image/ggc_multi.png'
+output_img_dir: 'output/image/single.png'
+output_multi_img_dir: 'output/image/multi.png'
 model_dir: 'models/convnext_base.pth'
 target: 1
 
@@ -83,3 +83,11 @@ occlusion:
   additional_forward_args:
   perturbations_per_eval: 1
   show_progress: True
+
+# Grad-CAM
+# !!! When using Grad-CAM, you must specify a layer (line 27 in guided_gc.py). 
+gradcam:
+  device_ids:
+  additional_forward_args:
+  attribute_to_layer_input: False
+  relu_attributions: True
