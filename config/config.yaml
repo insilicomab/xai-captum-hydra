@@ -65,7 +65,7 @@ vis_img_multi:
 ## Algorithm ##
 
 # Guided Grad-CAM
-# !!! 
+# !!! When using Guided Grad-CAM, you must specify a layer (line 27 in guided_gc.py). 
 ggc:
   device_ids:
   additional_forward_args:
