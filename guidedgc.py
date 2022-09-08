@@ -55,18 +55,22 @@ def main(cfg: DictConfig):
             use_pyplot=cfg.vis_img.use_pyplot
         )
 
+        figure.savefig(cfg.output_img_dir)
+
     # save multiple figures
     if cfg.vis_img_multi.enable:
-        figure, _ = viz.visualize_image_attr_multiple(
+        figure_m, _ = viz.visualize_image_attr_multiple(
             attribution_img,
             original_img,
-            methods=["heat_map", "original_image"],
-            signs = ["absolute_value", "all"],
-            fig_size=(15, 15),
-            show_colorbar = True
+            methods=cfg.vis_img_multi.methods,
+            signs=cfg.vis_img_multi.signs,
+            titles=cfg.vis_img_multi.titles,
+            fig_size=cfg.vis_img_multi.fig_size,
+            use_pyplot=cfg.vis_img_multi.use_pyplot,
+            show_colorbar=cfg.vis_img_multi.show_colorbar
             )
     
-        figure.savefig(cfg.output_img_dir)
+        figure_m.savefig(cfg.output_multi_img_dir)
 
 
 if __name__ == '__main__':
