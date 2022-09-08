@@ -18,7 +18,7 @@ def main(cfg: DictConfig):
     model.eval()
 
     # load and process image to analyze
-    imageLoader = ImageLoader('input/PNEUMONIA/person1946_bacteria_4874.jpeg', transform=DataTransform(image_size=224))
+    imageLoader = ImageLoader(cfg.input_img_dir, transform=DataTransform(image_size=224))
     input_img, original_img = imageLoader.process_images()
 
     # calculate attribution by Guided Grad-CAM
