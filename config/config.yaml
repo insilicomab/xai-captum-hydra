@@ -30,6 +30,7 @@ image_size: 224
 
 
 ## Visualization ##
+# https://captum.ai/api/utilities.html#captum.attr.visualization.visualize_image_attr
 vis_img:
   enable: True
   method: 'blended_heat_map'
@@ -40,10 +41,11 @@ vis_img:
   alpha_overlay: 0.5
   show_colorbar: False
   title:
-  fig_size:
+  fig_size: [6, 6]
   use_pyplot: True
 
 
+# https://captum.ai/api/utilities.html#captum.attr.visualization.visualize_image_attr_multiple
 vis_img_multi:
   enable: False
   methods: ["heat_map", "original_image"]
