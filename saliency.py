@@ -21,9 +21,9 @@ def main(cfg: DictConfig):
     input_img, original_img = imageLoader.process_images()
 
     # calculate attribution by Guided Grad-CAM
-    guided_gc = captum.attr.Saliency(model)
+    saliency = captum.attr.Saliency(model)
 
-    attribution = guided_gc.attribute(
+    attribution = saliency.attribute(
         inputs=input_img,
         target=cfg.target,
         abs=cfg.saliency.abs,
