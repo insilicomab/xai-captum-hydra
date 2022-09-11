@@ -1,0 +1,73 @@
+defaults:  
+  - _self_  
+  - override hydra/hydra_logging: disabled  
+  - override hydra/job_logging: disabled  
+
+hydra:
+  run:
+    dir: .
+  output_subdir: null
+  sweep:
+    dir: .
+    subdir: .
+
+
+## User Setting ##
+input_img_dir: 'input/PNEUMONIA/person1946_bacteria_4874.jpeg'
+output_img_dir: 'output/image/single.png'
+output_multi_img_dir: 'output/image/multi.png'
+model_dir: 'models/convnext_base.pth'
+target: 1
+
+
+## Model ##
+model_name: 'convnext_base'
+num_classes: 2
+
+
+## Transform ##
+image_size: 224
+
+
+## Visualization ##
+# https://captum.ai/api/utilities.html#captum.attr.visualization.visualize_image_attr
+vis_img:
+  enable: True
+  method: 'blended_heat_map'
+  sign: 'all'
+  plt_fig_axis:
+  outlier_perc: 2
+  cmap:
+  alpha_overlay: 0.5
+  show_colorbar: False
+  title:
+  fig_size: [6, 6]
+  use_pyplot: True
+
+
+# https://captum.ai/api/utilities.html#captum.attr.visualization.visualize_image_attr_multiple
+vis_img_multi:
+  enable: True
+  methods: ["heat_map", "original_image"]
+  signs: ["all", "all"]
+  outlier_perc: 2
+  cmap:
+  alpha_overlay:
+  show_colorbar: True
+  titles:
+  fig_size: [6, 6]
+  use_pyplot: True
+  
+
+
+## Algorithm ##
+
+# Occlusion
+# https://captum.ai/api/occlusion.html#captum.attr.Occlusion
+occlusion:
+  sliding_window_shapes: [3, 45, 45]
+  strides: [3, 9, 9] 
+  baselines: 0
+  additional_forward_args:
+  perturbations_per_eval: 1
+  show_progress: True
