@@ -7,7 +7,7 @@ from omegaconf import DictConfig
 from utils import load_model_pth, ImageLoader, DataTransform
 
 
-@hydra.main(version_base=None, config_path='config', config_name='config')
+@hydra.main(version_base=None, config_path='config', config_name='occlusion')
 def main(cfg: DictConfig):
 
     print(f'target: {cfg.target}')
